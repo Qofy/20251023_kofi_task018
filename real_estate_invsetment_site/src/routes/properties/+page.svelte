@@ -1,10 +1,25 @@
 <script>
   import Header from "$lib/sections/Header.svelte";
   import "../../lib/css/app.css";
+
+  let properties = [
+    "Ready to invest",
+    "Upcoming",
+    "Funded"
+  ]
 </script>
 
 <main class="bg-[#14161a]">
   <Header/>
-  <h1 class="text-2xl font-bold mt-8">Properties</h1>
-  <!-- Add properties content here -->
+  <div class="flex justify-between px-10">
+    <div class="flex gap-4">
+      {#each properties as property}
+        <a href={`/properties/${encodeURIComponent(property)}`}>
+          {property}
+        </a>
+      {/each}
+    </div>
+     <button>Filter and sort</button>
+  </div>
+  
 </main>
