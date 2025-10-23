@@ -1,5 +1,6 @@
 <script>
-  import Header from "$lib/sections/Header.svelte";
+  import { onMount } from 'svelte';
+  import { goto } from '$app/navigation';
+  onMount(() => goto('/properties'));
 </script>
-
-<Header/>
+<!-- Redirecting to /properties -->
