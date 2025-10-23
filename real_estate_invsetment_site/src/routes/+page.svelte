@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  onMount(() => goto('/properties'));
+  onMount(() => goto('/properties/Ready%20to%20invest'));
 </script>
-<!-- Redirecting to /properties -->
+<!-- Redirecting to /properties/Ready to invest -->
