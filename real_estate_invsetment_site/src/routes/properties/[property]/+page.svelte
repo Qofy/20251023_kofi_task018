@@ -73,9 +73,9 @@
           <div class="bg-[#883bed] h-2 rounded" style={`width: ${percent}%`}></div>
         </div>
         <p class="text-sm text-gray-400 mb-2 w-full flex justify-between">Appreciation <span class="flex gap-1 text-[green] items-center text-[1rem] font-bold"><TrendingUp color="green" size={12}/>{current.appreciation}</span></p>
-        <a href="#" class="px-22 py-3 bg-[#883bed] rounded-[8px]">
-           View Details
-        </a>
+        <a href={`/properties/${encodeURIComponent(property)}/view-all`} class="px-22 py-3 bg-[#883bed] rounded-[8px]">
+        View Details
+      </a>     
       </div>
     </div>
   {/if}
