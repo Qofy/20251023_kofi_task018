@@ -1,6 +1,6 @@
 <script>
-  import Header from "$lib/sections/Header.svelte";
-  import "../../../lib/css/app.css";
+  import "$lib/css/app.css";
+  import RUF from "$lib/component/R-U-F.svelte";
   import {Bed, Bath, Square,MapPin,TrendingUp, Funnel} from "lucide-svelte"
   import { page } from '$app/stores';
   $: property = $page.params.property;
@@ -27,7 +27,7 @@
   const size = 15
 </script>
 
-<main class="bg-[#14161a]  px-10">
+<main class="bg-[#14161a]  px-10  mt-30">
   <div class="flex justify-between mb-9">
     <div class="flex gap-10 bg-[#2a2b2d] h-12 w-110 items-center rounded-[10px] px-3.5">
       {#each properties as p}

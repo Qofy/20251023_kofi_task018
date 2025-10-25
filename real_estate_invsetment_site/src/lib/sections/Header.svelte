@@ -6,6 +6,7 @@ import Cart from "$lib/component/Cart.svelte";
 let size = 18;
 let showCart = false;
 let showLang = false;
+let showLogin = false
 function openCart() {
   showCart = true;
 }
@@ -16,22 +17,39 @@ function toggleLang() {
   showLang = !showLang;
   console.log("Show lang", showLang)
 }
+
+function toggleLogin(){
+  showLogin =!showLogin
+}
+
 function selectLang(lang) {
   showLang = false;
-  // You can add logic here to change language
+  // You can add logi
+  // c here to change language
 }
+let active;
 </script>
 
  <header class="fixed top-0 left-0 w-full h-19 border-b border-[#2c313a] flex justify-between items-center px-10 bg-[#14161a] z-50" >
  <div class="flex gap-6 items-center text-gray-400">
-  <a href="/"> 
-    <img src="https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/cdn/landingpage/favicon2.png" alt="vii" class="w-7">
+  <a href="/properties/Ready%20to%20invest"> 
+    <img src="https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/cdn/landingpage/favicon2.png" alt="vii" class="w-8">
   </a>
-  <a href="/">
-    Properties
+  <a href="/properties/Ready%20to%20invest"
+     class="text-[.9rem hover:text-[#883bed]"
+     class:text-[#883bed]={active === 'Properties'}
+     class:underline={active === 'Properties'}
+     on:click={() => active = 'Properties'}>
+     Properties
+     <span class="underline-offset-4"></span>
   </a>
-  <a href="/portfolio">
-    Portfolio
+  <a href="/portfolio"
+     class="text-[.9rem] hover:text-[#883bed]"
+     class:text-[#883bed]={active === 'Portfolio'}
+     class:underline={active === 'Portfolio'}
+     on:click={() => active = 'Portfolio'}>
+     Portfolio
+     <span class="underline-offset-4"></span>
   </a>
  </div>
 
@@ -49,9 +67,15 @@ function selectLang(lang) {
     <ShoppingCart size={size}/>
   </button>
 
-  <div class="w-9 h-9 rounded-[50%] bg-[#883bed] flex items-center justify-center">
+  <button class="w-9 h-9 rounded-[50%] bg-[#883bed] flex items-center justify-center" on:click={toggleLogin}>
     S
-  </div>
+  </button>
+  {#if showLogin}
+
+    <div>
+      p
+    </div>
+  {/if}
  </div>
  </header>
 
