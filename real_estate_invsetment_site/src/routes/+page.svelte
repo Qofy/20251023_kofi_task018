@@ -1,48 +1,37 @@
+<!-- <script context="module">
+  import { redirect } from "@sveltejs/kit";
+  export function load() {
+    throw redirect(307, "/properties/Ready%20to%20invest");
+  }
+</script> -->
+
 <script>
-  import CreateAccount from "$lib/sections/CreateAccount.svelte";
-  import bgVideo from "../lib/assets/bg-video.mp4"
-  import SignIn from "$lib/sections/SignIn.svelte";
-  let showSignIn = false;
+  import Header from "$lib/sections/Header.svelte";
+  import "$lib/css/app.css";
+  import { Funnel } from "lucide-svelte";
+
+  let properties = [
+    "Ready to invest",
+    "Upcoming",
+    "Funded",
+  ];
+  let activeProperty = properties[0];
 </script>
 
-<main class="grid grid-cols-2 ">
-  <div class="flex flex-col justify-center items-center py-15 gap-10">
-       <img src="https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/cdn/landingpage/favicon2.png" alt="vii" class="w-7">
-    <div class="flex flex-col justify-center items-center">
-      <h1 class="text-[#883bed] text-4xl font-bold">Welcome to Viivi</h1>
-      <p>Invest in Premium Real Estate with Blockchain Technology</p>
-    </div>
-    <div class="flex gap-4 mt-6 flex-col justify-center items-center">
-      <div class="flex gap-4">
-        <button 
-          class="bg-[#883bed] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#6a2fc9] transition" 
-          on:click={() => showSignIn = false}
+<main class="bg-[#14161a] px-10 mt-30">
+  <div class="flex justify-between mb-9">
+    <div class="flex gap-10 bg-[#2a2b2d] h-12 w-md items-center rounded-lg px-4">
+      {#each properties as p}
+        <a
+          href={`/properties/${encodeURIComponent(p)}`}
+          class={`py-1.5 px-3 rounded-lg ${p === activeProperty ? 'bg-black text-white font-bold' : 'bg-transparent text-gray-300'}`}
         >
-          Create Account
-        </button>
-        <button 
-          class="bg-[#222] text-white px-6 py-2 rounded-lg font-semibold border border-[#883bed] hover:bg-[#883bed] hover:text-white transition" 
-          on:click={() => showSignIn = true}
-        >
-          Sign In
-        </button>
-      </div>
-      <div>
-        {#if showSignIn}
-          <SignIn/>
-        {:else}
-          <CreateAccount/>
-        {/if}
-      </div>
+          {p}
+        </a>
+      {/each}
     </div>
-  </div>
-  <div class="relative h-full w-full flex items-center justify-center">
-    <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover z-0">
-      <source src={bgVideo} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <div class="relative z-10 w-full h-full flex items-center justify-center">
-      <!-- You can add overlay content here if needed -->
-    </div>
+    <button class="flex gap-1.5 items-center cursor-pointer border border-[#2c313a] px-4 rounded-lg hover:bg-[#883bed]">
+      <span><Funnel size=18 /></span> Filter and sort
+    </button>
   </div>
 </main>

@@ -27,7 +27,6 @@
   const size = 15
 </script>
 
-<Header/>
 <main class="bg-[#14161a]  px-10">
   <div class="flex justify-between mb-9">
     <div class="flex gap-10 bg-[#2a2b2d] h-12 w-110 items-center rounded-[10px] px-3.5">
@@ -47,7 +46,7 @@
     <div class="w-[20rem] bg-[#222] rounded-lg shadow-lg overflow-hidden mt-8 relative transition-transform duration-300 hover:scale-105 group">
       <div class="relative">
         {#if current.src && current.src.length > 0}
-          <img src={current.src[0]} alt="Property image" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" />
+          <img src={current.src[0]} alt={current.place || 'Property'} class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" />
           <span class="absolute top-2 right-2 bg-[#883bed] text-white text-xs px-2 py-1 rounded-full">
             1/{current.src.length}
           </span>
@@ -60,7 +59,7 @@
           <p class="flex gap-1 items-center">&#183 <Bath size={size}/> 2</p>
           <p class="flex gap-1 items-center">&#183 <Square size={size}/> 125 sqm</p>
         </div>
-        <p class="flex  text-[.8rem] gap-1 items-center text-gray-400"><MapPin size={size}/> {current.location} <span class="ml-[.5rem] py-1 px-3 rounded-2xl bg-[#05950540] hover:bg-[#883bed] text-[#ffff]">{current.rent}</span></p>
+  <p class="flex  text-[.8rem] gap-1 items-center text-gray-400"><MapPin size={size}/> {current.location} <span class="ml-2 py-1 px-3 rounded-2xl bg-[#05950540] hover:bg-[#883bed] text-[#ffff]">{current.rent}</span></p>
         <p>{current.place}</p>
       </div>
       <div class="p-6 flex flex-col gap-2">
@@ -73,7 +72,7 @@
           <div class="bg-[#883bed] h-2 rounded" style={`width: ${percent}%`}></div>
         </div>
         <p class="text-sm text-gray-400 mb-2 w-full flex justify-between">Appreciation <span class="flex gap-1 text-[green] items-center text-[1rem] font-bold"><TrendingUp color="green" size={12}/>{current.appreciation}</span></p>
-        <a href={`/properties/${encodeURIComponent(property)}/view-all`} class="px-22 py-3 bg-[#883bed] rounded-[8px]">
+  <a href={`/properties/${encodeURIComponent(property)}/view-all`} class="px-22 py-3 bg-[#883bed] rounded-lg">
         View Details
       </a>     
       </div>

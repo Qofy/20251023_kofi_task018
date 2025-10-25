@@ -7,7 +7,11 @@
 	},
 	"exclude": [
 		"src/routes/create-account/+page.svelte",
-		"src/routes/sign-in/+page.svelte"
+		"src/routes/sign-in/+page.svelte",
+		"src/routes/properties/[property]/+page.svelte",
+		"src/routes/properties/[property]/view-all/+page.svelte",
+		"src/routes/properties/+page.svelte",
+		"src/routes/properties/view-all/+page.svelte"
 	]
 	// Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias
 	// except $lib which is handled by https://svelte.dev/docs/kit/configuration#files

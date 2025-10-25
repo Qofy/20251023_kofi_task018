@@ -33,11 +33,14 @@
     if (images.length) mainImageIndex = (mainImageIndex + 1) % images.length;
   }
 </script>
-<Header/>
-<main class="min-h-screen bg-[#14161a] px-10">
-  <button class="mb-8 px-6 py-2 cursor-pointer text-white rounded-lg font-semibold hover:bg-[#6a2fc9] transition" on:click={() => window.location.href = '/properties/Ready%20to%20invest'}>
-    	&#8592; Back to properties
-  </button>
+<main class="min-h-screen bg-[#14161a] px-10 mt-28">
+  {#if current}
+    <button class="mb-8 px-6 py-2 cursor-pointer text-white rounded-lg font-semibold hover:bg-[#6a2fc9] transition" on:click={() => window.location.href = `/properties/${current.name}`}> 
+      &#8592; Back to {current.name}
+    </button>
+  {:else}
+    <div class="mb-8 px-6 py-2 text-white rounded-lg font-semibold bg-red-600">Property not found. <a href="/properties/Ready%20to%20invest" class="underline">Go to default property</a></div>
+  {/if}
   <div class="grid grid-cols-2 gap-10">
     <!-- Images Section -->
     <div class="flex flex-col gap-4">
@@ -59,9 +62,9 @@
       </div>
       <div class="flex gap-2">
         {#each images as img, i}
-          <div class="cursor-pointer border-2 rounded-lg {mainImageIndex === i ? 'border-[#883bed]' : 'border-transparent'}" on:click={() => mainImageIndex = i}>
+          <button type="button" class="cursor-pointer border-2 rounded-lg {mainImageIndex === i ? 'border-[#883bed]' : 'border-transparent'}" on:click={() => mainImageIndex = i} aria-label={`Show image ${i+1}`}> 
             <img src={img} alt={`Thumbnail ${i+1}`} class="w-30 h-30 object-cover rounded-lg" />
-          </div>
+          </button>
         {/each}
       </div>
     </div>

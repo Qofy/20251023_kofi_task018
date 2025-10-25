@@ -6,8 +6,7 @@
 
 </script>
 
-<Header/>
-<main class="bg-[#14161a] flex flex-col gap-10 px-10">
+<main class="bg-[#14161a] flex flex-col gap-10 px-10 mt-28">
   <div class="flex justify-between">
     <PortfolioHead head="Total portfolio value" amount="0,00$"/>
     <PortfolioHead head="Total amount invested" amount="0,00$"/>
@@ -18,7 +17,7 @@
     <FileText color="#552ad0"/>
     <h3 class="text-[.9rem]">Monthly Statemwnt history</h3>
   </div>
-  <h3 class="font-[400] text-2xl">Your investments</h3>
+  <h3 class="font-normal text-2xl">Your investments</h3>
   <div class="bg-[#1a1c22] flex flex-col gap-6 justify-center items-center h-84 roundered">
     <Building2/>
     <h3 class="font-bold text-[1.1rem]">Your investment journey is one step away!</h3>
