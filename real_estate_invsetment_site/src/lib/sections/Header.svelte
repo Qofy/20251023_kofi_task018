@@ -1,9 +1,47 @@
 <script>
 import "../css/app.css";
-import {Globe, ShoppingCart, X} from "@lucide/svelte";
+import {Globe, ShoppingCart, X, User, Wallet, Settings, LogOut} from "@lucide/svelte";
 import Cart from "$lib/component/Cart.svelte";
 
+import { onMount } from 'svelte';
+
+function closeAllPopups() {
+  showLogin = false;
+  showCart = false;
+  showLang = false;
+}
+
+const popuInfo = [
+  {
+    id:1,
+    sym: User,
+    name: "Profile"
+  },
+  {
+    id:2,
+    sym:Wallet,
+    name: "Wallet"
+  },
+  {
+    id:3,
+    sym:Settings,
+    name:"Settings"
+  },
+  {
+    id:4,
+    sym:Settings,
+    name:"Expert Mode"
+  },
+  {
+    id:5,
+    sym: LogOut,
+    name: "Sign Out"
+  }
+]
+
 let size = 18;
+let active;
+let mail = "sdfafhga@ashgah"
 let showCart = false;
 let showLang = false;
 let showLogin = false
@@ -17,6 +55,20 @@ function toggleLang() {
   showLang = !showLang;
   console.log("Show lang", showLang)
 }
+onMount(() => {
+  function handleBodyClick(e) {
+    const header = document.querySelector('header');
+    if (!header.contains(e.target)) {
+      closeAllPopups();
+    }
+  }
+  document.body.addEventListener('click', handleBodyClick);
+  return () => {
+    document.body.removeEventListener('click', handleBodyClick);
+  };
+});
+
+
 
 function toggleLogin(){
   showLogin =!showLogin
@@ -27,29 +79,26 @@ function selectLang(lang) {
   // You can add logi
   // c here to change language
 }
-let active;
 </script>
 
- <header class="fixed top-0 left-0 w-full h-19 border-b border-[#2c313a] flex justify-between items-center px-10 bg-[#14161a] z-50" >
+ <header class="fixed top-0 left-0 w-full h-19 border-b border-[#2c313a] flex justify-between items-center px-10 bg-[#14161a] z-50">
  <div class="flex gap-6 items-center text-gray-400">
   <a href="/properties/Ready%20to%20invest"> 
     <img src="https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/cdn/landingpage/favicon2.png" alt="vii" class="w-8">
   </a>
   <a href="/properties/Ready%20to%20invest"
-     class="text-[.9rem hover:text-[#883bed]"
-     class:text-[#883bed]={active === 'Properties'}
-     class:underline={active === 'Properties'}
-     on:click={() => active = 'Properties'}>
-     Properties
-     <span class="underline-offset-4"></span>
+    class="text-[.9rem] hover:text-[#883bed] underline-offset-4"
+    class:text-[#883bed]={active === 'Properties'}
+    class:underline={active === 'Properties'}
+    on:click={() => active = 'Properties'}>
+    Properties
   </a>
   <a href="/portfolio"
-     class="text-[.9rem] hover:text-[#883bed]"
-     class:text-[#883bed]={active === 'Portfolio'}
-     class:underline={active === 'Portfolio'}
-     on:click={() => active = 'Portfolio'}>
-     Portfolio
-     <span class="underline-offset-4"></span>
+    class="text-[.9rem] hover:text-[#883bed] underline-offset-4"
+    class:text-[#883bed]={active === 'Portfolio'}
+    class:underline={active === 'Portfolio'}
+    on:click={() => active = 'Portfolio'}>
+    Portfolio
   </a>
  </div>
 
@@ -67,13 +116,23 @@ let active;
     <ShoppingCart size={size}/>
   </button>
 
-  <button class="w-9 h-9 rounded-[50%] bg-[#883bed] flex items-center justify-center" on:click={toggleLogin}>
+  <button class="w-9 h-9 rounded-[50%] bg-[#883bed] flex items-center justify-center relative" on:click={toggleLogin}>
     S
   </button>
   {#if showLogin}
-
-    <div>
-      p
+    <div class="w-[220px] bg-[#2c313a] fixed top-16 right-10 rounded-lg shadow-lg z-50 p-4 flex flex-col gap-2">
+      <div class="mb-2">
+        <h3 class="text-white text-sm font-bold">{mail}</h3>
+        <p class="text-gray-400 text-xs">Welcome to Viivi</p>
+      </div>
+      <div class="flex flex-col gap-2">
+        {#each popuInfo as item}
+          <button class="flex items-center gap-2 text-gray-300 hover:bg-[#883bed] py-1 px-2 rounded-lg w-full text-left">
+            <svelte:component this={item.sym} size={16}/>
+            <span>{item.name}</span>
+          </button>
+        {/each}
+      </div>
     </div>
   {/if}
  </div>
