@@ -17,12 +17,13 @@
     }
     // Simulate account creation
     error = '';
+    localStorage.setItem('authenticated', 'true');
     goto('/properties/Ready%20to%20invest');
   }
 </script>
 
-<main class=" flex flex-col items-center justify-center bg-[#14161a]" id="create-account">
-  <div class="bg-[#222] p-8 rounded-lg shadow-lg w-full max-w-md">
+<main class=" flex flex-col items-center justify-center " id="create-account">
+  <div class="p-8 rounded-lg shadow-lg w-full max-w-md">
     <h2 class="text-2xl font-bold mb-6 text-[#883bed]">Create Account</h2>
     {#if error}
       <p class="text-red-500 mb-4">{error}</p>

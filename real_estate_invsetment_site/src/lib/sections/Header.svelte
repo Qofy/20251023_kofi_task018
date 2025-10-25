@@ -57,8 +57,11 @@ function toggleLang() {
 }
 onMount(() => {
   function handleBodyClick(e) {
+    // Only close if click is outside header and popups
     const header = document.querySelector('header');
-    if (!header.contains(e.target)) {
+    const popups = Array.from(document.querySelectorAll('.popup, .Cart, .language-popup'));
+    const isHeaderOrPopup = header.contains(e.target) || popups.some(popup => popup.contains(e.target));
+    if (!isHeaderOrPopup) {
       closeAllPopups();
     }
   }
