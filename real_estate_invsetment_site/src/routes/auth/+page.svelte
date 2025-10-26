@@ -43,8 +43,8 @@
   </video>
   <!-- Gradient overlay -->
   <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-black/100 to-white/20 z-10 pointer-events-none"></div>
-  <div class="relative z-20 w-full h-full flex items-center justify-center">
-    <!-- You can add overlay content here if needed -->
-  </div>
+  <!-- <div class="relative z-20 w-full h-full flex items-center justify-center">
+    -- You can add overlay content here if needed --
+  </div> -->
 </div>
 </main>

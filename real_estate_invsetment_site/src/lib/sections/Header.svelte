@@ -123,8 +123,8 @@ function selectLang(lang) {
     S
   </button>
   {#if showLogin}
-    <div class="w-[220px] bg-[#2c313a] fixed top-16 right-10 rounded-lg shadow-lg z-50 p-4 flex flex-col gap-2">
-      <div class="mb-2">
+    <div class="w-[220px] bg-[#181b20] fixed top-16 right-10 rounded-lg shadow-lg z-50 p-4 flex flex-col gap-2">
+      <div class="mb-2 ">
         <h3 class="text-white text-sm font-bold">{mail}</h3>
         <p class="text-gray-400 text-xs">Welcome to Viivi</p>
       </div>
