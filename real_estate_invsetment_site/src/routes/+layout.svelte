@@ -1,20 +1,25 @@
 <script>
-	import favicon from '$lib/assets/favicon.svg';
-	import Header from '$lib/sections/Header.svelte';
-	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+		import favicon from '$lib/assets/favicon.svg';
+		import Header from '$lib/sections/Header.svelte';
+		import { page } from '$app/stores';
 
-	let { children } = $props();
-
-	onMount(() => {
-		// Simple demo: check localStorage for 'authenticated'
-		if (!localStorage.getItem('authenticated')) {
-			goto('/auth');
-		}
-	});
+		let { children } = $props();
 </script>
 
+<script context="module">
+	export async function load({ url, cookies }) {
+		if (url.pathname !== '/auth') {
+			const authenticated = cookies.get('authenticated');
+			if (!authenticated) {
+				return {
+					status: 302,
+					redirect: '/auth'
+				};
+			}
+		}
+		return {};
+	}
+</script>
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>

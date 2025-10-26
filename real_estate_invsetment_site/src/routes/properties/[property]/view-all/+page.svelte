@@ -3,8 +3,9 @@
 	import { Bed, Bath, Square, MapPin, TrendingUp, ChevronLeft, ChevronRight } from 'lucide-svelte';
 	import Header from '$lib/sections/Header.svelte';
 	import InvestPopup from '$lib/component/InvestPopup.svelte';
+  import Foreground from '$lib/component/Foreground.svelte'
 	$: property = $page.params.property;
-	let properties = [
+	const properties = [
 		{
 			id: 1,
 			name: 'Ready to invest',
@@ -233,4 +234,5 @@
 			</div>
 		</div>
 	</div>
+  <Foreground/>
 </main>

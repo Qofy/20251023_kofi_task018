@@ -1,0 +1,58 @@
+export const apartmentdata = [
+		{
+			id: 1,
+			name: 'Ready to invest',
+			available: 1,
+			pname: 'property',
+			src: [
+				'https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/bundle-images/Altbau/berlin_altbau.jpg',
+				'https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/property-images/Bergmannkiez-Kreuzberg/1750339463041.jpg',
+				'https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/property-images/Bergmannkiez-Kreuzberg/1750339464095.jpg',
+				'https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/property-images/Bergmannkiez-Kreuzberg/1750339464894.jpg',
+				'https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/property-images/Jaegerstrasse-6-HH-2143/1750330085952.jpg'
+			],
+			price: 650000,
+			currency: '$',
+			valuation: 667577,
+			progress: '1.3%',
+			location: 'Bergmannstr. 5, 10961 Berlin',
+			rent: 'Rented',
+			appreciation: '+2.70%',
+			place: 'Kreuzberg Elegance',
+			description:"Die Altbauwohnung in der begehrten Bergmannstraße in Kreuzberg vereint klassischen Berliner Charme mit moderner Ausstattung, darunter hohe Decken, Stuck, Holzdielen, eine Einbauküche, Balkon und modernisiertes Bad. Sie liegt inmitten einer lebendigen Nachbarschaft mit Cafés, Boutiquen und exzellenter Anbindung an den Nahverkehr, ideal für Singles, Paare oder kleine Familien.",
+			type: "Apartment",
+			area:"125m",
+			bath:2,
+			bedroom:3
+		},
+		{
+			id: 2,
+			name: 'Upcoming',
+			src: [],
+			available: 0,
+			pname: 'property',
+			price: 0,
+			currency: '$',
+			valuation: 0,
+			progress: '0%',
+			location: '',
+			rent: '',
+			appreciation: '',
+			place: ''
+		},
+		{
+			id: 3,
+			name: 'Funded',
+			src: [],
+			available: 0,
+			pname: 'property',
+			price: 0,
+			currency: '$',
+			valuation: 0,
+			progress: '0%',
+			location: '',
+			rent: '',
+			appreciation: '',
+			place: ''
+		}
+	];
