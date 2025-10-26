@@ -13,3 +13,7 @@
 .text-color{
   @apply text-gray-400
 }
+
+.round-num{
+  @apply bg-[#020203] w-6 h-6 rounded-[50%] flex items-center justify-center
+}
