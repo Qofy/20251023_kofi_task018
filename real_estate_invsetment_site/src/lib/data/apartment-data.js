@@ -23,7 +23,8 @@ export const apartmentdata = [
 			type: "Apartment",
 			area:"125m",
 			bath:2,
-			bedroom:3
+			bedroom:3,
+			monthlyrent:180,
 		},
 		{
 			id: 2,
@@ -31,9 +32,9 @@ export const apartmentdata = [
 			src: [],
 			available: 0,
 			pname: 'property',
-			price: 0,
+			price: "289.888",
 			currency: '$',
-			valuation: 0,
+			valuation: 23343,
 			progress: '0%',
 			location: '',
 			rent: '',
@@ -43,6 +44,7 @@ export const apartmentdata = [
 			area:"120m",
 			bath:2,
 			bedroom:4,
+			monthlyrent:150,
 			description:"hghdshdf,gsjfdklfklfg.dlfk"
 		},
 		{
@@ -51,9 +53,9 @@ export const apartmentdata = [
 			src: [],
 			available: 0,
 			pname: 'property',
-			price: 0,
+			price: "2234.565",
 			currency: '$',
-			valuation: 0,
+			valuation: 5656,
 			progress: '0%',
 			location: '',
 			rent: 'Rented',
@@ -63,6 +65,7 @@ export const apartmentdata = [
 			area:"115m",
 			bath:3,
 			bedroom:5,
-			descroption:"ushdkdfjhbvö dhflh djfhkttr"
+			descroption:"ushdkdfjhbvö dhflh djfhkttr",
+			monthlyrent:200,
 		}
 	];

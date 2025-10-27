@@ -1,6 +1,10 @@
 <script>
 import "../css/app.css"
+import Financial from "./Financial.svelte";
+import FinancialMetric from "./FinancialMetric.svelte";
 import Overview from "./Overview.svelte";
+import {CircleAlert} from "lucide-svelte"
+import { apartmentdata } from "$lib/data/apartment-data";
 let activeTab = 'overview';
 export let apartmentIndex = 0;
 const tabs = [
@@ -9,6 +13,7 @@ const tabs = [
   { id: 'location', label: 'Location' },
   { id: 'document', label: 'Documents' }
 ];
+const apartment = apartmentdata[apartmentIndex];
 </script>
 
 <main class="mt-12">
@@ -29,7 +34,22 @@ const tabs = [
         <Overview index={apartmentIndex}/>
       </div>
     {:else if activeTab === 'financial'}
-      <div id="financial">financial</div>
+      <div id="financial">
+        <h1 class="font-medium text-2xl">Financial Performance</h1>
+        <div class="grid grid-cols-4 gap-5">
+
+          <FinancialMetric value={apartment.price} label="Original Price" icon={CircleAlert} />
+  <FinancialMetric value={apartment.valuation} label="Current Value" icon={CircleAlert} />
+  <FinancialMetric value={apartment.progress} label="Net Rental Yield" icon={CircleAlert} />
+  <FinancialMetric value={apartment.progress} label="Annualised ROI" icon={CircleAlert} />
+        </div>
+        
+        <div>
+          <h3>Rental Income Details</h3>
+          <FinancialMetric value={apartment.monthlyrent} label="Monthly rent" icon={CircleAlert}/>
+        </div>
+
+      </div>
     {:else if activeTab === 'location'}
       <div id="location">location</div>
     {:else if activeTab === 'document'}
