@@ -34,7 +34,7 @@ const apartment = apartmentdata[apartmentIndex];
         <Overview index={apartmentIndex}/>
       </div>
     {:else if activeTab === 'financial'}
-      <div id="financial">
+      <div id="financial" class="flex flex-col gap-5">
         <h1 class="font-medium text-2xl">Financial Performance</h1>
         <div class="grid grid-cols-4 gap-5">
 
@@ -43,7 +43,7 @@ const apartment = apartmentdata[apartmentIndex];
   <FinancialMetric value={apartment.progress} label="Net Rental Yield" icon={CircleAlert} />
   <FinancialMetric value={apartment.progress} label="Annualised ROI" icon={CircleAlert} />
         </div>
-        
+
         <div>
           <h3>Rental Income Details</h3>
           <FinancialMetric value={apartment.monthlyrent} label="Monthly rent" icon={CircleAlert}/>

@@ -1,4 +1,5 @@
 <script>
+import { locale, _ } from "$lib/i18n.js";
 import "../css/app.css";
 import {Globe, ShoppingCart, X, User, Wallet, Settings, LogOut} from "@lucide/svelte";
 import Cart from "$lib/component/Cart.svelte";
@@ -79,8 +80,7 @@ function toggleLogin(){
 
 function selectLang(lang) {
   showLang = false;
-  // You can add logi
-  // c here to change language
+  locale.set(lang);
 }
 </script>
 
@@ -94,28 +94,28 @@ function selectLang(lang) {
     class:text-[#883bed]={active === 'Properties'}
     class:underline={active === 'Properties'}
     on:click={() => active = 'Properties'}>
-    Properties
+    {$_('Properties')}
   </a>
   <a href="/portfolio"
     class="text-[.9rem] hover:text-[#883bed] underline-offset-4"
     class:text-[#883bed]={active === 'Portfolio'}
     class:underline={active === 'Portfolio'}
     on:click={() => active = 'Portfolio'}>
-    Portfolio
+  {$_('Portfolio')}
   </a>
  </div>
 
  <div class="flex gap-6 items-center relative">
-  <button type="button" on:click={toggleLang} aria-label="Select language" class="bg-transparent border-none p-0 m-0 cursor-pointer">
+  <button type="button" on:click={toggleLang} aria-label={$_('Select language')} class="bg-transparent border-none p-0 m-0 cursor-pointer">
     <Globe size={size}/>
   </button>
   {#if showLang}
-    <div class="absolute top-10 right-25  bg-[#222] rounded-lg shadow-lg border border-[#2c313a] py-2 px-4 z-50 flex flex-col gap-2 min-w-[130px]">
-      <button class="text-gray-300 hover:text-[#883bed] py-1 px-2 text-left flex gap-1.5" on:click={() => selectLang('de')}>🇩🇪 German</button>
-      <button class="text-gray-300 hover:text-[#883bed] py-1 px-2 text-left flex gap-1.5" on:click={() => selectLang('en')}>🇬🇧 English</button>
+    <div class="absolute top-10 right-25 language-popup bg-[#222] rounded-lg shadow-lg border border-[#2c313a] py-2 px-4 z-50 flex flex-col gap-2 min-w-[150px]">
+      <button class="text-gray-300 hover:text-[#883bed] py-1 px-2 text-left flex gap-1.5" on:click={() => selectLang('de')}>🇩🇪 {$_('German')}</button>
+      <button class="text-gray-300 hover:text-[#883bed] py-1 px-2 text-left flex gap-1.5" on:click={() => selectLang('en')}>🇬🇧 {$_('English')}</button>
     </div>
   {/if}
-  <button type="button" on:click={openCart} aria-label="Open cart" class="bg-transparent border-none p-0 m-0 cursor-pointer">
+  <button type="button" on:click={openCart} aria-label={$_('Open cart')} class="bg-transparent border-none p-0 m-0 cursor-pointer">
     <ShoppingCart size={size}/>
   </button>
 
@@ -126,13 +126,13 @@ function selectLang(lang) {
     <div class="w-[220px] bg-[#181b20] fixed top-16 right-10 rounded-lg shadow-lg z-50 p-4 flex flex-col gap-2">
       <div class="mb-2 ">
         <h3 class="text-white text-sm font-bold">{mail}</h3>
-        <p class="text-gray-400 text-xs">Welcome to Viivi</p>
+  <p class="text-gray-400 text-xs">{$_('Welcome')}</p>
       </div>
       <div class="flex flex-col gap-2">
         {#each popuInfo as item}
           <button class="flex items-center gap-2 text-gray-300 hover:bg-[#883bed] py-1 px-2 rounded-lg w-full text-left">
             <svelte:component this={item.sym} size={16}/>
-            <span>{item.name}</span>
+            <span>{$_(item.name)}</span>
           </button>
         {/each}
       </div>

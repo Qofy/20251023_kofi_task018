@@ -29,7 +29,7 @@ export const apartmentdata = [
 		{
 			id: 2,
 			name: 'Upcoming',
-			src: [],
+			src: ["https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/bundle-images/Altbau/muenchen_altbau.jpg"],
 			available: 0,
 			pname: 'property',
 			price: "289.888",
@@ -50,7 +50,7 @@ export const apartmentdata = [
 		{
 			id: 3,
 			name: 'Funded',
-			src: [],
+			src: ["https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/bundle-images/Altbau/hamburg_altbau.jpg"],
 			available: 0,
 			pname: 'property',
 			price: "2234.565",
