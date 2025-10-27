@@ -12,8 +12,8 @@
     }
     // Simulate sign in
     error = '';
-    localStorage.setItem('authenticated', 'true');
-    goto('/properties/Ready%20to%20invest');
+    document.cookie = "authenticated=true; path=/";
+    window.location.href = '/properties/Ready%20to%20invest';
   }
 </script>
 
