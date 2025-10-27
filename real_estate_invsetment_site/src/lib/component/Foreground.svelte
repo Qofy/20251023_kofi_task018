@@ -1,7 +1,8 @@
 <script>
 import "../css/app.css"
-	import Overview from "./Overview.svelte";
+import Overview from "./Overview.svelte";
 let activeTab = 'overview';
+export let apartmentIndex = 0;
 const tabs = [
   { id: 'overview', label: 'Overview' },
   { id: 'financial', label: 'Financials' },
@@ -25,7 +26,7 @@ const tabs = [
   <div id="bdy" class="rounded-lg p-6 min-h-[120px]">
     {#if activeTab === 'overview'}
       <div id="overview">
-        <Overview/>
+        <Overview index={apartmentIndex}/>
       </div>
     {:else if activeTab === 'financial'}
       <div id="financial">financial</div>

@@ -3,34 +3,17 @@
   import RUF from "$lib/component/R-U-F.svelte";
   import {Bed, Bath, Square,MapPin,TrendingUp, Funnel} from "lucide-svelte"
   import { page } from '$app/stores';
+  import { apartmentdata } from '$lib/data/apartment-data';
   $: property = $page.params.property;
-  let properties = [
-    { id: 1, 
-      name: "Ready to invest",
-      available:1,
-      pname: "property",
-      src:["https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/bundle-images/Altbau/berlin_altbau.jpg","https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/property-images/Bergmannkiez-Kreuzberg/1750339463041.jpg","https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/property-images/Bergmannkiez-Kreuzberg/1750339464095.jpg","https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/property-images/Bergmannkiez-Kreuzberg/1750339464894.jpg", "https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/property-images/Jaegerstrasse-6-HH-2143/1750330085952.jpg"],
-      price:650.000,
-      currency:"$",
-      valuation: 667.577,
-      progress:"1.3%",
-      location: "Bergmannstr. 5, 10961 Berlin",
-      rent: "Rented",
-      appreciation: "+2.70%",
-      place:"Kreuzberg Elegance"
-    },
-    { id: 2, name: "Upcoming" },
-    { id: 3, name: "Funded" }
-  ];
-  $: current = properties.find(p => p.name === property);
+  $: current = apartmentdata.find(p => p.name === property) || apartmentdata[0];
   $: percent = current && current.progress ? parseFloat(current.progress.replace('%','')) : 0;
-  const size = 15
+  const size = 15;
 </script>
 
 <main class="bg-[#14161a]  px-10  mt-30">
   <div class="flex justify-between mb-9">
     <div class="flex gap-10 bg-[#2a2b2d] h-12 w-110 items-center rounded-[10px] px-3.5">
-      {#each properties as p}
+        {#each apartmentdata as p}
         <a href={`/properties/${encodeURIComponent(p.name)}`}
           class="py-1.5 px-3 rounded-[10px] {p.name === property ? 'bg-black text-white font-bold' : 'bg-transparent text-gray-300'}">
           {p.name}

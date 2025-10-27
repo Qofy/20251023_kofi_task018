@@ -3,62 +3,11 @@
 	import { Bed, Bath, Square, MapPin, TrendingUp, ChevronLeft, ChevronRight } from 'lucide-svelte';
 	import Header from '$lib/sections/Header.svelte';
 	import InvestPopup from '$lib/component/InvestPopup.svelte';
-  import Foreground from '$lib/component/Foreground.svelte'
+	import Foreground from '$lib/component/Foreground.svelte';
+	import { apartmentdata } from '$lib/data/apartment-data';
 	$: property = $page.params.property;
-	const properties = [
-		{
-			id: 1,
-			name: 'Ready to invest',
-			available: 1,
-			pname: 'property',
-			src: [
-				'https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/bundle-images/Altbau/berlin_altbau.jpg',
-				'https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/property-images/Bergmannkiez-Kreuzberg/1750339463041.jpg',
-				'https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/property-images/Bergmannkiez-Kreuzberg/1750339464095.jpg',
-				'https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/property-images/Bergmannkiez-Kreuzberg/1750339464894.jpg',
-				'https://wytpcfutzfnrjvtendxf.supabase.co/storage/v1/object/public/property-images/Jaegerstrasse-6-HH-2143/1750330085952.jpg'
-			],
-			price: 650000,
-			currency: '$',
-			valuation: 667577,
-			progress: '1.3%',
-			location: 'Bergmannstr. 5, 10961 Berlin',
-			rent: 'Rented',
-			appreciation: '+2.70%',
-			place: 'Kreuzberg Elegance'
-		},
-		{
-			id: 2,
-			name: 'Upcoming',
-			src: [],
-			available: 0,
-			pname: 'property',
-			price: 0,
-			currency: '$',
-			valuation: 0,
-			progress: '0%',
-			location: '',
-			rent: '',
-			appreciation: '',
-			place: ''
-		},
-		{
-			id: 3,
-			name: 'Funded',
-			src: [],
-			available: 0,
-			pname: 'property',
-			price: 0,
-			currency: '$',
-			valuation: 0,
-			progress: '0%',
-			location: '',
-			rent: '',
-			appreciation: '',
-			place: ''
-		}
-	];
-	$: current = properties.find((p) => p.name === property);
+	$: currentIndex = apartmentdata.findIndex((p) => p.name === property);
+	$: current = apartmentdata[currentIndex] || apartmentdata[0];
 	$: images = current && current.src ? current.src : [];
 	$: details = current || {};
 	const size = 15;
@@ -234,5 +183,5 @@
 			</div>
 		</div>
 	</div>
-  <Foreground/>
+	<Foreground apartmentIndex={currentIndex} />
 </main>

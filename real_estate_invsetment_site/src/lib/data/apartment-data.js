@@ -38,7 +38,12 @@ export const apartmentdata = [
 			location: '',
 			rent: '',
 			appreciation: '',
-			place: ''
+			place: '',
+					type: "Apartment",
+			area:"120m",
+			bath:2,
+			bedroom:4,
+			description:"hghdshdf,gsjfdklfklfg.dlfk"
 		},
 		{
 			id: 3,
@@ -51,8 +56,13 @@ export const apartmentdata = [
 			valuation: 0,
 			progress: '0%',
 			location: '',
-			rent: '',
+			rent: 'Rented',
 			appreciation: '',
-			place: ''
+			place: 'Hannover',
+					type: "Apartment",
+			area:"115m",
+			bath:3,
+			bedroom:5,
+			descroption:"ushdkdfjhbvö dhflh djfhkttr"
 		}
 	];
