@@ -1,11 +1,16 @@
-import { register, init, getLocaleFromNavigator, locale, _ } from 'svelte-i18n';
+import { addMessages, init, getLocaleFromNavigator, locale, _, waitLocale } from 'svelte-i18n';
+import en from './locales/en.json';
+import de from './locales/de.json';
 
-register('en', () => import('./locales/en.json'));
-register('de', () => import('./locales/de.json'));
+// Preload messages synchronously so formatting is safe during hydration
+addMessages('en', en);
+addMessages('de', de);
 
 init({
   fallbackLocale: 'en',
   initialLocale: typeof window !== 'undefined' ? getLocaleFromNavigator() : 'en',
 });
 
-export { locale, _ };
+const localeReady = waitLocale();
+
+export { locale, _, localeReady };
